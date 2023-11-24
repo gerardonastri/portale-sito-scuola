@@ -1,33 +1,22 @@
 
-import { GoogleLogin } from '@react-oauth/google';
-import {useEffect} from 'react'
-import { jwtDecode } from "jwt-decode";
-
-const clientId = "1087249134170-gnjvrh4am3fv61d3o329iostlvcj04b1.apps.googleusercontent.com"
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home/Home'
+import Login from './pages/Login/Login'
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
 
-  // useEffect(() => {
-  //   function start(){
-  //     gapi.client.init({
-  //       clientId: clientId,
-  //       scope: ""
-  //     })
-  //   }
-
-  //   gapi.load("client:auth2", start)
-  // })
 
   return (
-    <GoogleLogin
-      onSuccess={credentialResponse => {
-        const decoded = jwtDecode(credentialResponse.credential);
-        console.log(decoded);
-      }}
-      onError={() => {
-        console.log('Login Failed');
-      }}
-    />
+    <Router>
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+
+      <Analytics />
+    </Router>
   );
 }
 
