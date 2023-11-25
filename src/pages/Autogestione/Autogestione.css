@@ -79,13 +79,14 @@
     .autogestione__text h2{
         font-size: 18px;
         color: #444;
-        margin-bottom: 15px;
         font-family: var(--font-1);
-        margin-left: 15px;
+        max-width: 95%;
+        margin: 0 auto;
+        margin-bottom: 15px;
     }
 
     .autogestione__text p{
-        max-width: 90%;
+        max-width: 95%;
         margin: 0 auto;
         padding-bottom: 30px;
         border-bottom: 1px solid rgb(164, 164, 164);
