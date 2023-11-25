@@ -48,10 +48,10 @@ const Autogestione = () => {
 
             <div className="autogestione__items">
                 {corsi.map(corso => (
-                    <div className="autogestione__items-element">
+                    <a href={`/corso/928384`} className="autogestione__items-element">
                         <h2>{corso.title}</h2>
                         <img src={corso.image} alt="" />
-                    </div>
+                    </a>
                 ))}
             </div>
        </div>
