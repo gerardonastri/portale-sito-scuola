@@ -1,4 +1,10 @@
 
+
+:root{
+  --font-1: athelas, serif;
+  --font-2: source-sans-pro, sans-serif;
+}
+
 *{
   margin: 0;
   padding: 0;

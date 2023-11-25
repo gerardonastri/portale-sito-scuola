@@ -1,0 +1,125 @@
+
+
+.autogestione__featured{
+
+}
+
+.autogestione__featured img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.autogestione__featured-text{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+}
+
+.autogestione__featured-text h1{
+    font-family: var(--font-1);
+    font-size: 32px;
+    margin-bottom: 10px;
+    letter-spacing: 0.7px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.303);
+    z-index: 10;
+}
+
+.autogestione__featured-text h3{
+    font-family: var(--font-2);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.wrapper{
+    
+}
+
+.autogestione__text{
+    margin-top: 40px;
+
+}
+
+.autogestione__text h2{
+
+}
+
+
+.autogestione__items{
+    margin-top: 30px;
+    display: flex;
+    gap: 50px;
+}
+
+@media screen and (max-width: 700px){
+    .autogestione__featured{
+        height: 50vh;
+        width: 100%;
+        position: relative;
+    }
+
+    .autogestione__text h2{
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 15px;
+        font-family: var(--font-1);
+        margin-left: 15px;
+    }
+
+    .autogestione__text p{
+        max-width: 90%;
+        margin: 0 auto;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgb(164, 164, 164);
+        font-size: 14px;
+        color: #222;
+        font-weight: 500;
+        font-family: var(--font-2);
+    }
+
+    .wrapper{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .autogestione__items{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .autogestione__items-element{
+        width: 100%;
+    }
+    .autogestione__items-element h2{
+        text-align: center;
+        font-family: var(--font-2);
+        font-weight: 500;
+        color: #222;
+        margin-bottom: 5px;
+    }
+
+    .autogestione__items-element img{
+        width: 100%;
+        height: 120px;
+        border-radius: 1.5rem;
+        object-fit: cover;
+    }
+}
