@@ -25,6 +25,7 @@
     font-size: 32px;
     margin-bottom: 10px;
     letter-spacing: 0.7px;
+    font-weight: 500;
     width: 100%;
     text-align: center;
     color: white;
@@ -76,24 +77,30 @@
         position: relative;
     }
 
+    .autogestione__text{
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgb(164, 164, 164);
+    }
+
     .autogestione__text h2{
-        font-size: 18px;
-        color: #444;
+        font-size: 16px;
+        color: #E52628;
         font-family: var(--font-1);
-        max-width: 95%;
-        margin: 0 auto;
+        font-weight: 900;
+        text-transform: uppercase;
         margin-bottom: 15px;
+        text-align: center;
+        /* letter-spacing: normal; */
     }
 
     .autogestione__text p{
-        max-width: 95%;
-        margin: 0 auto;
-        padding-bottom: 30px;
-        border-bottom: 1px solid rgb(164, 164, 164);
-        font-size: 14px;
+        text-align: center;
+        font-size: 12px;
         color: #222;
         font-weight: 500;
         font-family: var(--font-2);
+        max-width: 80%;
+        margin: 0 auto;
     }
 
     .wrapper{
@@ -104,6 +111,7 @@
     .autogestione__items{
         flex-direction: column;
         gap: 30px;
+        margin-bottom: 60px;
     }
 
     .autogestione__items-element{

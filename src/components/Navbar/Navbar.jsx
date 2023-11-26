@@ -1,11 +1,27 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import './Navbar.css'
 
 import logo from '../../images/logo_scuola_vettoriale.svg'
 
-const Navbar = () => {
+const Navbar = ({type = "normal"}) => {
+
+  const ref = useRef(null);
+
+  const [isActive, setIsActive] = useState(false)
+
+
+  const changeBg = () => {
+    if(window.scrollY >= 100){
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
+  }
+
+  window.addEventListener("scroll", changeBg)
+
   return (
-    <div className='navbar'>
+    <div className={isActive ? 'navbar active' : 'navbar'} ref={ref}>
       <a href="/autogestione" className="logo">
         <img src={logo} alt="" />
       </a>

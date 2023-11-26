@@ -42,7 +42,7 @@ const Autogestione = () => {
 
        <div className="wrapper">
             <div className="autogestione__text">
-                <h2>Scegli il corso più adatto a te e divertiti!</h2>
+                <h2>Scegli il corso più adatto a te</h2>
                 <p>qui sono presenti tutti i corsi proposti da voi, scegline uno o più e sarai pronto ad imparare tutto</p>
             </div>
 

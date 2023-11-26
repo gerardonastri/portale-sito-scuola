@@ -1,8 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root{
-  --font-1: athelas, serif;
-  --font-2: source-sans-pro, sans-serif;
+  /* --font-1: athelas, serif; */
+  --font-1: headline-gothic-atf, sans-serif;
+  /* --font-2: source-sans-pro, sans-serif; */
+  --font-2: 'Roboto', sans-serif;
 }
 
 *{
