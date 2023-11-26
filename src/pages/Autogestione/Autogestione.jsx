@@ -8,7 +8,10 @@ import fotografiaImg from '../../images/foto autogestione/macchina_fotografica-s
 import pittoricaImg from '../../images/foto autogestione/pittorica.jpeg'
 import videoImg from '../../images/foto autogestione/video-making.webp'
 
+import { useSelector} from 'react-redux'
 
+import { axiosReq } from '../../utils/apiCalls';
+import { useEffect, useState } from 'react';
 
 
 const Autogestione = () => {
@@ -27,6 +30,23 @@ const Autogestione = () => {
             image: videoImg
         }
     ]
+
+    //controllo del token
+    const user = useSelector(state => state.currentUser)
+  
+    useEffect(() => {
+        const validate = async () => {
+            try {
+                const res = await axiosReq.post("/auth/verify", {
+                token: user?.token
+                })
+                
+            } catch (error) {
+                window.location.replace("/login")
+            }
+        }
+      validate()
+    }, [])
 
   return (
     <div className="autogestione">

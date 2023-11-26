@@ -9,6 +9,10 @@ import { PiClockCountdownThin } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
 import { MdLocationCity } from "react-icons/md";
 
+import { useSelector} from 'react-redux'
+import { axiosReq } from '../../utils/apiCalls';
+import { useEffect, useState } from 'react';
+
 const Corso = () => {
 
     const items = [
@@ -28,6 +32,23 @@ const Corso = () => {
             info: "25"
         }
     ]
+
+    //controllo token
+    const user = useSelector(state => state.currentUser)
+  
+    useEffect(() => {
+        const validate = async () => {
+            try {
+                const res = await axiosReq.post("/auth/verify", {
+                token: user?.token
+                })
+                
+            } catch (error) {
+                window.location.replace("/login")
+            }
+        }
+      validate()
+    }, [])
 
   return (
     <div className='corso'>

@@ -3,8 +3,8 @@ import './Login.css'
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
-import {useDispatch, useSelector} from 'react-redux'
-import { loginSuccess } from '../../redux/userRedux';
+import {useDispatch} from 'react-redux'
+import { loginSuccess, logout } from '../../redux/userRedux';
 import {axiosReq} from '../../utils/apiCalls'
 
 
@@ -12,8 +12,6 @@ const Login = () => {
 
   const dispatch = useDispatch()
 
-  const user = useSelector(state => state.currentUser)
-  console.log(user);
 
   const handleLogin = async (user) => {
     try {
@@ -22,11 +20,10 @@ const Login = () => {
         email: user.email
       })
       dispatch(loginSuccess(res.data))
-      console.log(res.data);
-      // window.location.replace("/")
+      window.location.replace("/")
     } catch (error) {
       console.log(error);
-      // window.location.reload();
+      window.location.reload();
     }
   }
 
