@@ -3,7 +3,7 @@ import './Login.css'
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { loginSuccess } from '../../redux/userRedux';
 import {axiosReq} from '../../utils/apiCalls'
 
@@ -12,7 +12,10 @@ const Login = () => {
 
   const dispatch = useDispatch()
 
-  const handleLogin = async ({user}) => {
+  const user = useSelector(state => state.currentUser)
+  console.log(user);
+
+  const handleLogin = async (user) => {
     try {
       const res = await axiosReq.post("/auth/login", {
         name: user.name,
@@ -23,7 +26,7 @@ const Login = () => {
       // window.location.replace("/")
     } catch (error) {
       console.log(error);
-      window.location.reload();
+      // window.location.reload();
     }
   }
 
