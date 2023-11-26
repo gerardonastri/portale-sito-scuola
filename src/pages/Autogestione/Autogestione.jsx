@@ -16,20 +16,20 @@ import { useEffect, useState } from 'react';
 
 const Autogestione = () => {
 
-    const corsi = [
-        {
-            title: "Fotografia",
-            image: fotografiaImg
-        },
-        {
-            title: "Pittorica",
-            image: pittoricaImg
-        },
-        {
-            title: "Video-Making",
-            image: videoImg
-        }
-    ]
+    // const corsi = [
+    //     {
+    //         title: "Fotografia",
+    //         image: fotografiaImg
+    //     },
+    //     {
+    //         title: "Pittorica",
+    //         image: pittoricaImg
+    //     },
+    //     {
+    //         title: "Video-Making",
+    //         image: videoImg
+    //     }
+    // ]
 
     //controllo del token
     const user = useSelector(state => state.currentUser)
@@ -46,6 +46,22 @@ const Autogestione = () => {
             }
         }
       validate()
+    }, [])
+
+    //items
+    const [corsi, setCorsi] = useState(null)
+
+    useEffect(() => {
+        const getData = async () => {
+            try{
+                const res = await axiosReq.get("/corso")
+                setCorsi(res.data)
+            } catch (error){
+                console.log(error);
+            }
+        }   
+
+        getData()
     }, [])
 
   return (
@@ -67,10 +83,10 @@ const Autogestione = () => {
             </div>
 
             <div className="autogestione__items">
-                {corsi.map(corso => (
-                    <a href={`/corso/928384`} className="autogestione__items-element">
-                        <h2>{corso.title}</h2>
-                        <img src={corso.image} alt="" />
+                {corsi?.map(corso => (
+                    <a href={`/corso/${corso._id}`} className="autogestione__items-element">
+                        <h2>{corso.name}</h2>
+                        <img src={corso.img} alt="" />
                     </a>
                 ))}
             </div>

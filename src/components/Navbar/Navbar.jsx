@@ -5,7 +5,6 @@ import logo from '../../images/logo_scuola_vettoriale.svg'
 
 const Navbar = ({type = "normal"}) => {
 
-  const ref = useRef(null);
 
   const [isActive, setIsActive] = useState(false)
 
@@ -21,7 +20,7 @@ const Navbar = ({type = "normal"}) => {
   window.addEventListener("scroll", changeBg)
 
   return (
-    <div className={isActive ? 'navbar active' : 'navbar'} ref={ref}>
+    <div className={isActive ? `navbar active ${type !== "normal" && "secondType"}` : `navbar ${type !== "normal" && "secondType"}`}>
       <a href="/autogestione" className="logo">
         <img src={logo} alt="" />
       </a>
