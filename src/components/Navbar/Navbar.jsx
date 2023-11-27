@@ -25,7 +25,12 @@ const Navbar = ({type = "normal"}) => {
         <img src={logo} alt="" />
       </a>
 
-      {/* <div className="navbar__links"></div> */}
+      <div className="navbar__links">
+        <a href="/">Home</a>
+        <a href="/">Contact</a>
+        <a href="/">About</a>
+        <a href="/">Blog</a>
+      </div>
       <div className="hamburger">
         <div className="bar" />
         <div className="bar" />

@@ -11,12 +11,14 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 
-// 1087249134170-gnjvrh4am3fv61d3o329iostlvcj04b1.apps.googleusercontent.com
-// 52946809134-dqfc0cvfd2ik9dvo74ik1pe4i2j870cn.apps.googleusercontent.com
+const devID = "1087249134170-gnjvrh4am3fv61d3o329iostlvcj04b1.apps.googleusercontent.com"
+const productionID = "52946809134-dqfc0cvfd2ik9dvo74ik1pe4i2j870cn.apps.googleusercontent.com"
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId="52946809134-dqfc0cvfd2ik9dvo74ik1pe4i2j870cn.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={devID}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
