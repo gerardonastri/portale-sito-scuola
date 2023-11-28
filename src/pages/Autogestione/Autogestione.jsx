@@ -1,12 +1,10 @@
 import React from 'react'
 import './Autogestione.css'
 import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 
 //images
 import featuredImg from '../../images/foto autogestione/featured.webp'
-import fotografiaImg from '../../images/foto autogestione/macchina_fotografica-scaled.jpg'
-import pittoricaImg from '../../images/foto autogestione/pittorica.jpeg'
-import videoImg from '../../images/foto autogestione/video-making.webp'
 
 import { useSelector} from 'react-redux'
 
@@ -15,21 +13,6 @@ import { useEffect, useState } from 'react';
 
 
 const Autogestione = () => {
-
-    // const corsi = [
-    //     {
-    //         title: "Fotografia",
-    //         image: fotografiaImg
-    //     },
-    //     {
-    //         title: "Pittorica",
-    //         image: pittoricaImg
-    //     },
-    //     {
-    //         title: "Video-Making",
-    //         image: videoImg
-    //     }
-    // ]
 
     //controllo del token
     const user = useSelector(state => state.currentUser)
@@ -91,6 +74,8 @@ const Autogestione = () => {
                 ))}
             </div>
        </div>
+
+       <Footer />
     </div>
   )
 }

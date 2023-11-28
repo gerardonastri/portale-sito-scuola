@@ -128,6 +128,18 @@
     }
 
     .autogestione__text p{
+        max-width: 80%;
+    }
+
+    .autogestione__featured img{
+        height: 100%;
+    }
+
+    .overlay{
+        height: 50vh;
+    }
+
+    .autogestione__text p{
         font-size: 12px;
     }
 
