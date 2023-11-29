@@ -7,6 +7,7 @@ const Navbar = ({type = "normal"}) => {
 
 
   const [isActive, setIsActive] = useState(false)
+  const [showLinks, setShowLinks] = useState(false)
 
 
   const changeBg = () => {
@@ -20,18 +21,18 @@ const Navbar = ({type = "normal"}) => {
   window.addEventListener("scroll", changeBg)
 
   return (
-    <div className={isActive ? `navbar active ${type !== "normal" && "secondType"}` : `navbar ${type !== "normal" && "secondType"}`}>
+    <div className={isActive || showLinks ? `navbar active ${type !== "normal" && "secondType"}` : `navbar ${type !== "normal" && "secondType"}`}>
       <a href="/autogestione" className="logo">
         <img src={logo} alt="" />
       </a>
 
-      <div className="navbar__links">
+      <div className={showLinks ? "navbar__links show" : "navbar__links"}>
         <a href="/">Home</a>
         <a href="/">Contact</a>
         <a href="/">About</a>
         <a href="/">Blog</a>
       </div>
-      <div className="hamburger">
+      <div className="hamburger" onClick={() => {setShowLinks(prev => !prev)}}>
         <div className="bar" />
         <div className="bar" />
         <div className="bar" />

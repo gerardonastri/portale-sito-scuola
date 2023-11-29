@@ -32,7 +32,7 @@ function App() {
           )}
 
           {(user?.user.isAdmin || user?.user.organizzatore) && (
-            <Route path="/create" element={<Create />} />
+            <Route path="/manage" element={<Create />} />
           )}
          </>
        ) : (
