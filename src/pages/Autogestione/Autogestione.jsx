@@ -68,7 +68,11 @@ const Autogestione = () => {
             <div className="autogestione__items">
                 {corsi?.map(corso => (
                     <a href={`/corso/${corso._id}`} className="autogestione__items-element">
-                        <h2>{corso.name}</h2>
+                       <div className="autogestione__items-element_text">
+                            <h2>{corso.name}</h2>
+                            <p>{corso.desc}</p>
+                       </div>
+                       <div className="img-overlay" />
                         <img src={corso.img} alt="" />
                     </a>
                 ))}

@@ -72,6 +72,22 @@
         width: 30px;
         height: 3px;
         background-color: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .bar.active:nth-child(2){
+        transform-origin: center;
+        width: 0;
+    }
+    .bar.active:nth-child(1){
+        transform: rotate(45deg) translate(-10px, 6px);;
+        transform-origin: top left;
+        width: 29px;
+    }
+    .bar.active:nth-child(3){
+        transform: rotate(-45deg) translate(-8px, -8px);;
+        transform-origin: bottom left;
+        width: 29px;
     }
     .navbar.active .bar{
         background-color: #333 !important;
@@ -88,8 +104,10 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        border-bottom: 2px solid rgb(164, 164, 164);
+        border-top: 2px solid rgb(164, 164, 164);
+        /* border-bottom: 2px solid rgb(164, 164, 164); */
         padding: 20px 0;
+        padding-top: 40px;
     }
     .navbar__links.show{
         left: 0;

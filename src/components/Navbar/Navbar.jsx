@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react'
 import './Navbar.css'
 
+import {useSelector} from 'react-redux'
+
 import logo from '../../images/logo_scuola_vettoriale.svg'
 
 const Navbar = ({type = "normal"}) => {
@@ -8,6 +10,8 @@ const Navbar = ({type = "normal"}) => {
 
   const [isActive, setIsActive] = useState(false)
   const [showLinks, setShowLinks] = useState(false)
+
+  const {user} = useSelector(state => state.currentUser)
 
 
   const changeBg = () => {
@@ -30,12 +34,14 @@ const Navbar = ({type = "normal"}) => {
         <a href="/">Home</a>
         <a href="/">Contact</a>
         <a href="/">About</a>
-        <a href="/">Blog</a>
+        {(user?.isAdmin || user?.isOrganizzatore) && (
+          <a href="/manage">Corsi</a>
+        )}
       </div>
       <div className="hamburger" onClick={() => {setShowLinks(prev => !prev)}}>
-        <div className="bar" />
-        <div className="bar" />
-        <div className="bar" />
+        <div className={showLinks ? "bar active" : "bar"} />
+        <div className={showLinks ? "bar active" : "bar"} />
+        <div className={showLinks ? "bar active" : "bar"} />
       </div>
     </div>
   )
