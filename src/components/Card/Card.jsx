@@ -6,9 +6,9 @@ import { IoIosPeople } from "react-icons/io";
 
 import { IoTimeOutline } from "react-icons/io5";
 
-const Card = ({item}) => {
+const Card = ({item, adminPage = false}) => {
   return (
-    <a href={`/manage/${item._id}`} className='card'>
+    <a href={adminPage ? `/manage/${item._id}` : `/iscritti/${item._id}`} className='card'>
       <div className="card__up">
         <h3>{item.name}</h3>
       </div>
@@ -18,7 +18,13 @@ const Card = ({item}) => {
         <span><IoTimeOutline />{item.durata}</span>
       </div>
       <div className="card__bottom">
-        <span>modifica</span>
+        <span>
+          {adminPage ? (
+            <span>modifica</span>
+          ) : (
+            <span>vedi iscritti</span>
+          )}
+        </span>
       </div>
     </a>
   )

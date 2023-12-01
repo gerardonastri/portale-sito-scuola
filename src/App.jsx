@@ -10,6 +10,7 @@ import Create from './pages/Create/Create';
 import { useSelector} from 'react-redux'
 
 import { Analytics } from "@vercel/analytics/react";
+import Iscritti from './pages/Iscritti/Iscritti';
 
 
 function App() {
@@ -32,11 +33,14 @@ function App() {
           )}
 
           {(user?.user.isAdmin || user?.user.organizzatore) && (
-            <Route path="/manage" element={<Create />} />
+           <>
+             <Route path="/manage" element={<Create />} />
+             <Route path="/iscritti/:id" element={<Iscritti />} />
+           </>
           )}
          </>
        ) : (
-        <>
+        <> {/* pagine accedibili da un utente normale */}
           
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Navigate to="/login" />} />
