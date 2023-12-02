@@ -11,6 +11,7 @@ import { useSelector} from 'react-redux'
 
 import { Analytics } from "@vercel/analytics/react";
 import Iscritti from './pages/Iscritti/Iscritti';
+import Edit from './pages/Edit/Edit';
 
 
 function App() {
@@ -22,14 +23,17 @@ function App() {
 
       <Routes>
        {user ? ( //solo s l'utente è loggato può accedere a queste pagine
-         <>
+        <>
           <Route path='/' element={<Navigate to="/autogestione" />} />
           <Route path='/login' element={<Login />} />
           <Route path='/autogestione' element={<Autogestione />} />
           <Route path='/corso/:id' element={<Corso />} />
 
           {user?.user.isAdmin && (
-            <Route path="/admin" element={<Admin />} />
+            <>
+              <Route path="/admin" element={<Admin />} />
+              <Route path='/edit/:id' element={<Edit />} /> 
+            </>
           )}
 
           {(user?.user.isAdmin || user?.user.organizzatore) && (
@@ -38,7 +42,7 @@ function App() {
              <Route path="/iscritti/:id" element={<Iscritti />} />
            </>
           )}
-         </>
+        </>
        ) : (
         <> {/* pagine accedibili da un utente normale */}
           
