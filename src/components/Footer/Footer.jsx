@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="footer__item-links">
               <a href="/">Chi siamo?</a>
               <a href="/">about us</a>
-              <a href="/">la scuola</a>
+              <a href="https://www.iismargheritahackbaronissi.edu.it/">la scuola</a>
             </div>
           </div>
 
@@ -36,9 +36,9 @@ const Footer = () => {
           <div className="footer__item">
             <h3>social</h3>
             <div className="footer__item-social">
-              <a href="/"><FaInstagram /></a>
-              <a href="/"><FaFacebookF /></a>
-              <a href="/"><FaXTwitter /></a>
+              <a href="https://www.instagram.com/illgerardo/"><FaInstagram /></a>
+              <a href="https://www.facebook.com/profile.php?id=100009579646708"><FaFacebookF /></a>
+              <a href="https://twitter.com/gerardo52820679"><FaXTwitter /></a>
             </div>  
           </div>
         </div>

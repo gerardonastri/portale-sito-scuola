@@ -70,10 +70,13 @@ const Corso = () => {
      }, [id])
 
     //iscrizione al corso
+
+    const [slot, setSlot] = useState(1)
     const handleIscrizione = async () => {
         try {
             await axiosReq.post(`/corso/${id}`, {
-                id: user.user._id
+                id: user.user._id,
+                // slot: slot
             })
             window.location.reload()
         } catch (error) {
@@ -85,7 +88,8 @@ const Corso = () => {
      const handleAnnullazione = async () => {
         try {
             await axiosReq.post(`/corso/annulla/${id}`, {
-                id: user.user._id
+                id: user.user._id,
+                // slot: slot
             })
             window.location.reload()
         } catch (error) {
