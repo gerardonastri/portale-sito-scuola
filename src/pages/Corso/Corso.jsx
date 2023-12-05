@@ -11,9 +11,11 @@ import { PiClockCountdownThin } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
 import { MdLocationCity } from "react-icons/md";
 
-import { useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { axiosReq } from '../../utils/apiCalls';
 import { useEffect, useState } from 'react';
+
+import {loginSuccess} from '../../redux/userRedux'
 
 const Corso = () => {
 
@@ -34,6 +36,8 @@ const Corso = () => {
             info: "25"
         }
     ]
+
+    
 
     //controllo token
     const user = useSelector(state => state.currentUser)
@@ -65,19 +69,21 @@ const Corso = () => {
                 console.log(error);
             }
         }   
- 
          getData()
      }, [id])
 
     //iscrizione al corso
 
     const [slot, setSlot] = useState(1)
+    const dispatch = useDispatch()
     const handleIscrizione = async () => {
         try {
-            await axiosReq.post(`/corso/${id}`, {
+            const res = await axiosReq.post(`/corso/${id}`, {
                 id: user.user._id,
-                // slot: slot
+                slot: slot,
+                token: user?.token
             })
+            dispatch(loginSuccess(res.data))
             window.location.reload()
         } catch (error) {
             console.log(error);
@@ -87,17 +93,47 @@ const Corso = () => {
     // annullazione iscrizione al corso
      const handleAnnullazione = async () => {
         try {
-            await axiosReq.post(`/corso/annulla/${id}`, {
+            const res = await axiosReq.post(`/corso/annulla/${id}`, {
                 id: user.user._id,
-                // slot: slot
+                slot: slot,
+                token: user?.token
             })
+            dispatch(loginSuccess(res.data))
             window.location.reload()
         } catch (error) {
             console.log(error);
         }
     }
 
+    const [canSubscribe, setCanSubscribe] = useState("si")
 
+    useEffect(() => {
+        const handleCanSub = () => {
+
+            let counter = 0;
+            corso?.iscritti?.forEach(item => {
+                if(item.user === user?.user._id && item.slot === slot){
+                    counter++;
+                }
+            })
+
+            let isSlotLibero = true;
+            for(let i = slot; i < corso?.durata + slot; i++){
+                if(!user?.user.slotLiberi.includes(i)){
+                    isSlotLibero = false;
+                }
+            }
+            
+           if(counter === 0){
+            isSlotLibero ? setCanSubscribe("si") : setCanSubscribe("occupato");
+           } else {
+            setCanSubscribe("no")
+           }
+        }
+        handleCanSub()
+    }, [corso?.iscritti, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, corso?.durata])
+
+    
   return (
     <div className='corso'>
         <Navbar type="white" />
@@ -136,11 +172,24 @@ const Corso = () => {
             
 
                 <div className="corso__action">
-                    {corso?.iscritti.includes(user?.user._id) ? (
+                    {canSubscribe == 'no' && (
                         <button onClick={handleAnnullazione}>Annulla iscrizione</button>
-                    ) : (
+                    )}
+                    {canSubscribe == 'si' && (
                         <button onClick={handleIscrizione}>Iscrizione</button>
                     )}
+                    {canSubscribe == 'occupato' && (
+                        <button onClick>Slot occupato</button>
+                    )}
+                </div>
+
+                <div className="corso__slot">
+                    <span>Slot del corso:</span>
+                    <select value={slot} onChange={(e) => setSlot(parseInt(e.target.value))}>
+                    {Array.from({ length: corso?.slot }).map((it, i) => (
+                        <option value={i + 1}>{i + 1}</option>
+                    ))}
+                    </select>
                 </div>
             </div>
         </div>

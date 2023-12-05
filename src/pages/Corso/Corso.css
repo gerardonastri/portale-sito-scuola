@@ -39,7 +39,8 @@
 .corso__info h3{
     font-weight: 600;
     font-family: var(--font-2);
-    color: #F0B801;
+    /* color: #F0B801; */
+    color: var(--color-red);
     text-transform: uppercase;
     font-size: 15px;
     margin: 5px;
@@ -54,13 +55,13 @@
     width: 50%;
     margin: 0 auto;
     margin-top: 50px;
-    margin-bottom: 60px;
 }
 .corso__action button{
     width: 100%;
     padding: 10px 0;
     border-radius: 1.5rem;
-    background-color: #F0B801;
+    /* background-color: #F0B801; */
+    background: var(--color-red);
     color: white;
     font-family: var(--font-2);
     font-weight: 600;
@@ -69,7 +70,24 @@
     border: none;
 }
 
-
+.corso__slot{
+    /* width: 50%; */
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+.corso__slot select{
+    background-color: white;
+    border-radius: 1rem;
+    padding: 10px;
+}
+.corso__slot span{
+    color: var(--color-red);
+    font-weight: 500;
+}
 
 @media screen and (max-width: 700px){
     .wrapper{
@@ -87,5 +105,22 @@
         margin-top: 20px;
     }
 
-   
+    .corso__slot{
+        /* width: 50%; */
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+    }
+    .corso__slot select{
+        background-color: white;
+        border-radius: 1rem;
+        padding: 10px;
+    }
+    .corso__slot span{
+        color: var(--color-red);
+        font-weight: 500;
+    }
 }

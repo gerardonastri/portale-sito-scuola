@@ -36,9 +36,9 @@ const Footer = () => {
           <div className="footer__item">
             <h3>social</h3>
             <div className="footer__item-social">
-              <a href="https://www.instagram.com/illgerardo/"><FaInstagram /></a>
-              <a href="https://www.facebook.com/profile.php?id=100009579646708"><FaFacebookF /></a>
-              <a href="https://twitter.com/gerardo52820679"><FaXTwitter /></a>
+              <a href="https://www.instagram.com/illgerardo/" target="_blank"><FaInstagram /></a>
+              <a href="https://www.facebook.com/profile.php?id=100009579646708" target="_blank"><FaFacebookF /></a>
+              <a href="https://twitter.com/gerardo52820679" target="_blank"><FaXTwitter /></a>
             </div>  
           </div>
         </div>

@@ -37,6 +37,9 @@ const Navbar = ({type = "normal"}) => {
         {(user?.isAdmin || user?.isOrganizzatore) && (
           <a href="/manage">Corsi</a>
         )}
+        {(user?.isAdmin) && (
+          <a href="/admin">Admin</a>
+        )}
       </div>
       <div className="hamburger" onClick={() => {setShowLinks(prev => !prev)}}>
         <div className={showLinks ? "bar active" : "bar"} />

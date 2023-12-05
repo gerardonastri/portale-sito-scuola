@@ -19,6 +19,8 @@ const Edit = () => {
     const [classe, setClasse] = useState(null)
     const [capienzaMassima, setCapienzaMassima] = useState(null)
     const [durata, setDurata] = useState(null)
+    const [slot, setSlot] = useState(null)
+    const [organizzatore, setOrganizzatore] = useState(null)
     let { id } = useParams(); 
 
     useEffect(() => {
@@ -32,6 +34,8 @@ const Edit = () => {
                 setClasse(res.data?.classe)
                 setCapienzaMassima(res.data?.capienzaMassima)
                 setDurata(res.data?.durata)
+                setSlot(res.data?.slot)
+                setOrganizzatore(res.data?.organizzatore)
             } catch (error){
                 console.log(error);
             }
@@ -44,7 +48,18 @@ const Edit = () => {
     //edit
     const handleEdit = async () => {
         try {
-            
+            await axiosReq.put(`/corso/${id}`, {    
+                name,
+                desc,
+                iscritti,
+                img,
+                classe,
+                capienzaMassima,
+                durata,
+                slot,
+                organizzatore
+            })
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
@@ -74,7 +89,7 @@ const Edit = () => {
                         </div>
                         <div className="inputGroup">
                             <label>posti disponibili totali</label>
-                            <input type="text" placeholder={capienzaMassima && capienzaMassima} value={capienzaMassima && capienzaMassima} onChange={(e) => setCapienzaMassima(e.target.value)}  />
+                            <input type="number" placeholder={capienzaMassima && capienzaMassima} value={capienzaMassima && capienzaMassima} onChange={(e) => setCapienzaMassima(e.target.value)}  />
                         </div>
                         <div className="inputGroup">
                             <label>durata corso</label>
