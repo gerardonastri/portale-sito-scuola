@@ -179,7 +179,7 @@ const Corso = () => {
                         <button onClick={handleIscrizione}>Iscrizione</button>
                     )}
                     {canSubscribe == 'occupato' && (
-                        <button onClick>Slot occupato</button>
+                        <p>Hai già un corso a quest'ora! Seleziona uno slot libero.</p>
                     )}
                 </div>
 

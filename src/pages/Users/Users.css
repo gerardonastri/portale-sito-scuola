@@ -108,4 +108,13 @@
         display: none;
     }
 
+    .corsiAdmin .users__container-topbar span:nth-child(3){
+        display: block !important;
+    }
+
+    .iscritti .users__container-topbar span:nth-child(3), .iscritti .users__container-topbar span:nth-child(1), .iscritti .users__container-items a span:nth-child(1){
+        display: block !important;
+    }
+
+
 }

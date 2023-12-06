@@ -1,0 +1,13 @@
+
+
+.iscritti button{
+    background-color: var(--color-blue);
+    width: 100%;
+    padding: 10px 25px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    font-family: var(--font-1);
+    border-radius: 1.5rem;
+    cursor: pointer;
+}

@@ -3,6 +3,9 @@ import './Iscritti.css'
 
 import {useParams} from 'react-router-dom'
 import { axiosReq } from '../../utils/apiCalls';
+import Navbar from '../../components/Navbar/Navbar'
+
+import { IoIosSearch } from "react-icons/io";
 
 import * as XLSX from "xlsx";
 
@@ -16,7 +19,7 @@ const downloadExcel = (lista, nomeCorso) => {
   ]
 
   lista?.forEach((utente, i) => {
-    aoa.push([i + 1, utente.name])
+    aoa.push([i + 1, utente.user.name])
   })
   /* create worksheet */
   var ws = XLSX.utils.aoa_to_sheet(aoa);
@@ -34,23 +37,55 @@ const Iscritti = () => {
 
     useEffect(() => {
        const getData = async () => {
-           try{
-               const res = await axiosReq.get(`/corso/iscritti/${id}`)
-               setLista(res.data.lista)
-               setName(res.data.name)
-            } catch (error){
-               console.log(error);
-           }
-       }   
+          try{
+             const res = await axiosReq.get(`/corso/iscritti/${id}`)
+             setLista(res.data.lista)
+             setName(res.data.name)
+          } catch (error){
+             console.log(error);
+          }
+     }   
 
-        getData()
+     getData()
     }, [id])
 
 
   return (
-    <div className='iscritti'>
-        <button onClick={() => downloadExcel(lista, name)}>download</button>
+    <div className='iscritti users'>
+        <Navbar type="white" />
+        <div className="wrapper">
+          <h2>Iscritti al corso</h2>
+          <div className="users__topbar">
+            <div>
+              <button onClick={() => downloadExcel(lista, name)}>download excel</button>
+            </div>
+            {/* <form>
+                <input type="text" placeholder='Cerca...' value={search} onChange={(e) => handleChange(e)} />
+                <IoIosSearch />
+            </form> */}
+          </div>
+          <div className="users__container">
+            <div className="users__container-topbar">
+              <span>nome</span>
+              <span>classe</span>
+              <span>slot</span>
+            </div>
+              <div className="users__container-items">
+                {lista?.map(item => (
+                  <a href="#">
+                    <span>{item.user.name}</span>
+                    <span>{item.user.classe}</span>
+                    <span>{item.slot}</span>
+                  </a>
+               ))}
+              </div>
+            </div>
+        </div>
     </div>
+
+            
+
+
   )
 }
 

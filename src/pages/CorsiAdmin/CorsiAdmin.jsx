@@ -36,7 +36,7 @@ const CorsiAdmin = () => {
     }
 
   return (
-    <div className='users'>
+    <div className='users corsiAdmin'>
         <Navbar type="white" />
         <div className="wrapper">
             <h2>Tutti gli utenti</h2>
