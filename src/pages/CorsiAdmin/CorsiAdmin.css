@@ -1,2 +1,10 @@
 
 
+.corsiAdmin .users__topbar button{
+    width: 100%;
+    background-color: var(--color-blue);
+    color: white;
+    border-radius: 1.5rem;
+    border: none;
+    padding: 8px 20px;
+}

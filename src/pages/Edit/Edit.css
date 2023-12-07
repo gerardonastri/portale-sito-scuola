@@ -63,7 +63,7 @@
     font-weight: 600;
 }
 
-.edit__inputs input, .edit textarea{
+.edit__inputs input, .edit textarea, .create .textarea{
     background-color: #c6d0dd;
     border: none;
 }
@@ -73,7 +73,7 @@
 .edit__desc{
     margin-top: 20px;
 }
-.edit textarea{
+.edit textarea, .create .textarea{
     width: 100%;
     padding: 8px;
 }

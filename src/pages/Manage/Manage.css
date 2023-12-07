@@ -1,0 +1,39 @@
+.manage > .wrapper{
+    margin-top: 150px;
+}
+
+.manage h2{
+    color: #333;
+    font-size: 26px;
+    text-transform: uppercase;
+    font-family: var(--font-1);
+    text-align: center;
+}
+
+
+.manage__items{
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+@media screen and (max-width: 700px) {
+    .manage > .wrapper{
+        max-width: 90%;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .manage h2{
+        font-size: 14px;
+    }
+
+    .manage__items{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        margin-top: 40px;
+    }
+}

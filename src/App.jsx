@@ -5,6 +5,7 @@ import Login from './pages/Login/Login'
 import Corso from './pages/Corso/Corso'
 import Autogestione from './pages/Autogestione/Autogestione';
 import Admin from './pages/Admin/Admin';
+import Manage from './pages/Manage/Manage';
 import Create from './pages/Create/Create';
 
 import { useSelector} from 'react-redux'
@@ -37,12 +38,13 @@ function App() {
               <Route path='/edit/:id' element={<Edit />} /> 
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/corsi" element={<CorsiAdmin />} />
+              <Route path="/admin/create" element={<Create />} />
             </>
           )}
 
           {(user?.user?.isAdmin || user?.user?.organizzatore) && (
            <>
-             <Route path="/manage" element={<Create />} />
+             <Route path="/manage" element={<Manage />} />
              <Route path="/iscritti/:id" element={<Iscritti />} />
            </>
           )}

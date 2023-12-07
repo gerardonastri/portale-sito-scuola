@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-// import './Users.css'
+import './CorsiAdmin.css'
 
 import Navbar from '../../components/Navbar/Navbar'
 
@@ -39,13 +39,11 @@ const CorsiAdmin = () => {
     <div className='users corsiAdmin'>
         <Navbar type="white" />
         <div className="wrapper">
-            <h2>Tutti gli utenti</h2>
+            <h2>Tutti i corsi</h2>
             <div className="users__topbar">
-                <select onChange={(e) => setFilter(e.target.value)}>
-                    <option value={0}>Tutti gli utenti</option>
-                    <option value={1}>Organizzatori</option>
-                    <option value={2}>Admin</option>
-                </select>
+                <a href="/admin/create">
+                    <button>Create new</button>
+                </a>
                 <form>
                     <input type="text" placeholder='Cerca...' value={search} onChange={(e) => handleChange(e)} />
                     <IoIosSearch />

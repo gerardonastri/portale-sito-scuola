@@ -10,6 +10,7 @@ import { useSelector} from 'react-redux'
 
 import { axiosReq } from '../../utils/apiCalls';
 import { useEffect, useState } from 'react';
+import PopUp from '../../components/PopUp/PopUp'
 
 
 const Autogestione = () => {
@@ -80,6 +81,7 @@ const Autogestione = () => {
        </div>
 
        <Footer />
+       <PopUp />
     </div>
   )
 }

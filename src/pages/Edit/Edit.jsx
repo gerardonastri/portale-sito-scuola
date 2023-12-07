@@ -9,6 +9,8 @@ import fotografiaImg from '../../images/foto autogestione/macchina_fotografica-s
 import { axiosReq } from '../../utils/apiCalls';
 import { useEffect, useState } from 'react';
 
+import storage from '../../utils/firebase';
+
 const Edit = () => {
 
     //item
@@ -47,6 +49,12 @@ const Edit = () => {
     
     //edit
     const handleEdit = async () => {
+
+        if(img?.name){
+            const fileData = await storage.ref(`news/${img.name}`).put(img)
+            const imageSrc = await fileData.ref.getDownloadURL()
+            setImg(imageSrc)
+        }
         try {
             await axiosReq.put(`/corso/${id}`, {    
                 name,

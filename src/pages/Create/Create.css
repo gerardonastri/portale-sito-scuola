@@ -1,39 +1,25 @@
-.manage > .wrapper{
-    margin-top: 150px;
+
+.create .wrapper{
+    margin-top: 130px;
 }
 
-.manage h2{
-    color: #333;
-    font-size: 26px;
-    text-transform: uppercase;
+.create h2{
+    color: var(--color-red);
     font-family: var(--font-1);
     text-align: center;
 }
-
-
-.manage__items{
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
-    gap: 50px;
+.create textarea {
+    width: 100%;
+    padding: 8px;
 }
 
-@media screen and (max-width: 700px) {
-    .manage > .wrapper{
-        max-width: 90%;
-        margin: 0 auto;
-        margin-top: 100px;
-    }
+.create textarea {
+    background-color: #c6d0dd;
+    border: none;
+}
 
-    .manage h2{
-        font-size: 14px;
-    }
-
-    .manage__items{
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-        margin-top: 40px;
+@media screen and (max-width: 600px){
+    .create h2{
+        margin-bottom: 30px;
     }
 }
