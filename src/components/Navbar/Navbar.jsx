@@ -32,8 +32,8 @@ const Navbar = ({type = "normal"}) => {
 
       <div className={showLinks ? "navbar__links show" : "navbar__links"}>
         <a href="/">Home</a>
-        <a href="/">Contact</a>
-        <a href="/">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/iscrizioni">Iscrizioni</a>
         {(user?.isAdmin || user?.isOrganizzatore) && (
           <a href="/manage">Corsi</a>
         )}

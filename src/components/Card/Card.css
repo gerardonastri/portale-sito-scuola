@@ -60,7 +60,7 @@
     background-color: rgba(158, 25, 25, 0.571)
 }
 
-.card__bottom span{
+.card__bottom a{
     font-size: 13px;
     text-transform: uppercase;
     color: white;

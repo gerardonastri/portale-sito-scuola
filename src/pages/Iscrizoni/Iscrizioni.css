@@ -1,0 +1,11 @@
+
+
+.iscrizioni .wrapper{
+    margin-top: 130px;
+}
+
+.iscrizioni .wrapper h2{
+    text-align: center;
+    color: var(--color-red);
+    font-family: var(--font-1);
+}

@@ -15,6 +15,8 @@ import Iscritti from './pages/Iscritti/Iscritti';
 import Edit from './pages/Edit/Edit';
 import Users from './pages/Users/Users';
 import CorsiAdmin from './pages/CorsiAdmin/CorsiAdmin';
+import Iscrizioni from './pages/Iscrizoni/Iscrizioni';
+import EditUser from './pages/EditUser/EditUser';
 
 
 function App() {
@@ -31,12 +33,14 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/autogestione' element={<Autogestione />} />
           <Route path='/corso/:id' element={<Corso />} />
+          <Route path='/iscrizioni' element={<Iscrizioni />} />
 
           {user?.user?.isAdmin && (
             <>
               <Route path="/admin" element={<Admin />} />
               <Route path='/edit/:id' element={<Edit />} /> 
               <Route path="/admin/users" element={<Users />} />
+              <Route path="/admin/user/:id" element={<EditUser />} />
               <Route path="/admin/corsi" element={<CorsiAdmin />} />
               <Route path="/admin/create" element={<Create />} />
             </>
