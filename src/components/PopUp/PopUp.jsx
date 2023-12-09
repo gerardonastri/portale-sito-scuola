@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './PopUp.css'
 
-import {useSelector} from 'react-redux'
 import {axiosReq} from '../../utils/apiCalls'
+
+import {loginSuccess} from '../../redux/userRedux'
+import { useDispatch, useSelector} from 'react-redux'
 
 const PopUp = () => {
 
@@ -14,14 +16,20 @@ const PopUp = () => {
 
     const user = useSelector(state => state.currentUser)
 
+    const dispatch = useDispatch()
+
+
 
    const handleClick = async () => {
     try {
         window.localStorage.setItem("setPlesso", true)
-        await axiosReq.put(`/auth/plesso/${user.user._id}`, {
+        const res = await axiosReq.put(`/auth/plesso/${user.user._id}`, {
             plesso,
-            classe: `${classe}${sezione}`
+            classe: `${classe}${sezione}`,
+            token: user.token
         })
+        dispatch(loginSuccess(res.data))
+        window.location.reload()
     } catch (error) {
         console.log(error);
     }

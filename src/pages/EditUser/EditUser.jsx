@@ -13,7 +13,6 @@ import {loginSuccess} from '../../redux/userRedux'
 
 const EditUser = () => {
 
-    const dispatch = useDispatch()
 
     //item
     const [name, setName] = useState(null)
@@ -47,7 +46,7 @@ const EditUser = () => {
     const handleEdit = async () => {
 
         try {
-            const res = await axiosReq.put(`/admin/user/${id}`, {    
+            await axiosReq.put(`/admin/user/${id}`, {    
                 name,
                 email,
                 organizzatore,
@@ -55,7 +54,6 @@ const EditUser = () => {
                 classe,
                 plesso
             })
-            dispatch(loginSuccess(res.data))
             window.location.reload()
         } catch (error) {
             console.log(error);
