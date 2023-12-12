@@ -103,7 +103,7 @@
 
     .navbar__links{
         position: absolute;
-        left: -400px;
+        left: -480px;
         top: 80px;
         width: 100%;
         transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);

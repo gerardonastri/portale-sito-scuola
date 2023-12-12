@@ -3,7 +3,6 @@ import './Edit.css'
 import Navbar from '../../components/Navbar/Navbar'
 import {useParams} from 'react-router-dom'
 
-import fotografiaImg from '../../images/foto autogestione/macchina_fotografica-scaled.jpg'
 
 
 import { axiosReq } from '../../utils/apiCalls';

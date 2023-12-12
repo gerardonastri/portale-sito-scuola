@@ -4,8 +4,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import {useParams} from 'react-router-dom'
 
-import fotografiaImg from '../../images/foto autogestione/macchina_fotografica-scaled.jpg'
-
 //icons
 import { PiClockCountdownThin } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
@@ -18,24 +16,6 @@ import { useEffect, useState } from 'react';
 import {loginSuccess} from '../../redux/userRedux'
 
 const Corso = () => {
-
-    const items = [
-        {
-            icon: <PiClockCountdownThin />,
-            title: "durata",
-            info: "3H"
-        },
-        {
-            icon:  <MdLocationCity />,
-            title: "classe",
-            info: "4G"
-        },
-        {
-            icon: <IoIosPeople />,
-            title: "posti",
-            info: "25"
-        }
-    ]
 
     
 
@@ -129,9 +109,22 @@ const Corso = () => {
            } else {
             setCanSubscribe("no")
            }
+
+           let iscrittiAlCorso = 0;
+           corso?.iscritti?.forEach(item => {
+            if(item.slot === slot && item.user !== user?.user._id){
+                iscrittiAlCorso++;
+            }
+           })
+           console.log(iscrittiAlCorso);
+           
+           if(corso?.capienzaMassima === iscrittiAlCorso && counter === 0){
+            setCanSubscribe("sold")
+            console.log("ciao");
+           } 
         }
         handleCanSub()
-    }, [corso?.iscritti, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, corso?.durata])
+    }, [corso?.iscritti, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, corso?.durata, corso?.capienzaMassima])
 
     
   return (
@@ -169,6 +162,12 @@ const Corso = () => {
                         <p>{corso?.capienzaMassima}</p>
                     </div>
                 </div>
+
+                <div className="corso__slot">
+                    {Array.from({ length: corso?.slot }).map((it, i) => (
+                        <span className={slot === i+1 ? "corso__slot-item active" : "corso__slot-item"} onClick={() => setSlot(i + 1)}>Slot {i + 1}</span>
+                    ))}
+                </div>
             
 
                 <div className="corso__action">
@@ -181,15 +180,9 @@ const Corso = () => {
                     {canSubscribe == 'occupato' && (
                         <p>Hai già un corso a quest'ora! Seleziona uno slot libero.</p>
                     )}
-                </div>
-
-                <div className="corso__slot">
-                    <span>Slot del corso:</span>
-                    <select value={slot} onChange={(e) => setSlot(parseInt(e.target.value))}>
-                    {Array.from({ length: corso?.slot }).map((it, i) => (
-                        <option value={i + 1}>{i + 1}</option>
-                    ))}
-                    </select>
+                    {canSubscribe == 'sold' && (
+                        <p>I posti sono finiti! Prova un altro slot o cerca un altro corso libero.</p>
+                    )}
                 </div>
             </div>
         </div>

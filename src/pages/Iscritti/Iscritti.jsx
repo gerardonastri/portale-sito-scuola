@@ -59,10 +59,6 @@ const Iscritti = () => {
             <div>
               <button onClick={() => downloadExcel(lista, name)}>download excel</button>
             </div>
-            {/* <form>
-                <input type="text" placeholder='Cerca...' value={search} onChange={(e) => handleChange(e)} />
-                <IoIosSearch />
-            </form> */}
           </div>
           <div className="users__container">
             <div className="users__container-topbar">

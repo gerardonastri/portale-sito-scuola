@@ -1,5 +1,4 @@
-import React, {useEffect, useState
-} from 'react'
+import React from 'react'
 import './Admin.css'
 
 import Navbar from '../../components/Navbar/Navbar'
