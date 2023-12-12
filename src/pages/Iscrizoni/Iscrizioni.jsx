@@ -46,7 +46,7 @@ const Iscrizioni = () => {
     <div className='iscrizioni'>
         <Navbar type='white' />
         <div className="wrapper">
-           {corsi.length > 0 ? (
+           {corsi?.length > 0 ? (
                 <>
                     <h2>Corsi a cui sei iscritto</h2>
                     <div className="manage__items">

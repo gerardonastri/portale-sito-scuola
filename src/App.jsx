@@ -17,6 +17,7 @@ import Users from './pages/Users/Users';
 import CorsiAdmin from './pages/CorsiAdmin/CorsiAdmin';
 import Iscrizioni from './pages/Iscrizoni/Iscrizioni';
 import EditUser from './pages/EditUser/EditUser';
+import Contact from './pages/Contact/Contact';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path='/' element={<Navigate to="/autogestione" />} />
           <Route path='/login' element={<Login />} />
           <Route path='/autogestione' element={<Autogestione />} />
+          <Route path='/contact' element={<Contact />} />
           <Route path='/corso/:id' element={<Corso />} />
           <Route path='/iscrizioni' element={<Iscrizioni />} />
 
