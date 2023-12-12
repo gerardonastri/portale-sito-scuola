@@ -9,3 +9,8 @@
     color: var(--color-red);
     font-family: var(--font-1);
 }
+
+.iscrizioni h1{
+    color: var(--color-red);
+    font-size: 52px;
+}

@@ -40,18 +40,25 @@ const Iscrizioni = () => {
             }
         }
         getCorsi()
-    }, [])
+    }, [user?.user._id])
 
   return (
     <div className='iscrizioni'>
         <Navbar type='white' />
         <div className="wrapper">
-            <h2>Corsi a cui sei iscritto</h2>
-            <div className="manage__items">
-            {corsi?.map(item => (
-                <Card item={item} userPage={true} />
-            ))}
-            </div>
+           {corsi.length > 0 ? (
+                <>
+                    <h2>Corsi a cui sei iscritto</h2>
+                    <div className="manage__items">
+                        {corsi?.map(item => (
+                            <Card item={item} userPage={true} />
+                        ))}
+                    </div>
+                </>
+           ) : (
+                <h1>Non sei iscritto a nessun corso!</h1>
+           )}
+            
         </div>
 
 

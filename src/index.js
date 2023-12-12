@@ -18,7 +18,7 @@ const productionID = "52946809134-dqfc0cvfd2ik9dvo74ik1pe4i2j870cn.apps.googleus
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId={productionID}>
+  <GoogleOAuthProvider clientId={devID}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
