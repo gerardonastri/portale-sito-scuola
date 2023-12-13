@@ -19,8 +19,8 @@ const Footer = () => {
           <div className="footer__item">
             <h3>info</h3>
             <div className="footer__item-links">
-              <a href="/">Chi siamo?</a>
-              <a href="/">about us</a>
+              <a href="#">Chi siamo?</a>
+              <a href="https://gerardonastri.github.io/portoflio-page/">about us</a>
               <a href="https://www.iismargheritahackbaronissi.edu.it/">la scuola</a>
             </div>
           </div>
