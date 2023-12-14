@@ -2,6 +2,7 @@ import React from 'react'
 import './Autogestione.css'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
+import Spinner from '../../components/Spinner/Spinner'
 
 //images
 import featuredImg from '../../images/foto autogestione/featured.webp'
@@ -34,12 +35,15 @@ const Autogestione = () => {
 
     //items
     const [corsi, setCorsi] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         const getData = async () => {
+            setIsLoading(true)
             try{
                 const res = await axiosReq.get("/corso")
                 setCorsi(res.data)
+                setIsLoading(false)
             } catch (error){
                 console.log(error);
             }
@@ -66,18 +70,23 @@ const Autogestione = () => {
                 <p>qui sono presenti tutti i corsi proposti da voi, scegline uno o più e sarai pronto ad imparare tutto</p>
             </div>
 
-            <div className="autogestione__items">
-                {corsi?.map(corso => (
-                    <a href={`/corso/${corso._id}`} className="autogestione__items-element">
-                       <div className="autogestione__items-element_text">
-                            <h2>{corso.name}</h2>
-                            <p>{corso.desc}</p>
-                       </div>
-                       <div className="img-overlay" />
-                        <img src={corso.img} alt="" />
-                    </a>
-                ))}
-            </div>
+            {/* CORSI  */}
+            {isLoading ? (
+                <Spinner isActive={isLoading} />
+            ) : (
+                <div className="autogestione__items">
+                    {corsi?.map(corso => (
+                        <a href={`/corso/${corso._id}`} className="autogestione__items-element">
+                        <div className="autogestione__items-element_text">
+                                <h2>{corso.name}</h2>
+                                <p>{corso.desc}</p>
+                        </div>
+                        <div className="img-overlay" />
+                            <img src={corso.img} alt="" />
+                        </a>
+                    ))}
+                </div>
+            )}
        </div>
 
        <Footer />

@@ -141,6 +141,17 @@
     object-fit: cover;
 }
 
+.autogestione .spinner, .iscrizioni .spinner{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.autogestione .spinner img, .iscrizioni .spinner img{
+    width: 80px;
+    height: 80px;
+}
+
 @media screen and (max-width: 700px){
     .autogestione__featured{
         height: 50vh;

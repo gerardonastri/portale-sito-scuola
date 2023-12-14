@@ -7,6 +7,7 @@ import Footer from '../../components/Footer/Footer'
 import { axiosReq } from '../../utils/apiCalls';
 
 import { useSelector } from 'react-redux';
+import Spinner from '../../components/Spinner/Spinner'
 
 const Iscrizioni = () => {
 
@@ -29,12 +30,15 @@ const Iscrizioni = () => {
 
     //corsi utente
     const [corsi, setCorsi] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         const getCorsi = async () => {
+            setIsLoading(true)
             try {
                 const res = await axiosReq.get(`/corso/iscrizioni/${user?.user._id}`)
                 setCorsi(res.data)
+                setIsLoading(false)
             } catch (error) {
                 console.log(error);
             }
@@ -46,7 +50,7 @@ const Iscrizioni = () => {
     <div className='iscrizioni'>
         <Navbar type='white' />
         <div className="wrapper">
-           {corsi?.length > 0 ? (
+           {!isLoading && corsi?.length > 0 ? (
                 <>
                     <h2>Corsi a cui sei iscritto</h2>
                     <div className="manage__items">
@@ -56,7 +60,13 @@ const Iscrizioni = () => {
                     </div>
                 </>
            ) : (
-                <h1>Non sei iscritto a nessun corso!</h1>
+                <>
+                    {isLoading ? (
+                        <Spinner isActive={isLoading} />
+                    ) : (
+                        <h1>Non sei iscritto a nessun corso!</h1>
+                    )}
+                </>
            )}
             
         </div>
