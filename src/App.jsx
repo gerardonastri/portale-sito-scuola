@@ -18,6 +18,7 @@ import CorsiAdmin from './pages/CorsiAdmin/CorsiAdmin';
 import Iscrizioni from './pages/Iscrizoni/Iscrizioni';
 import EditUser from './pages/EditUser/EditUser';
 import Contact from './pages/Contact/Contact';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 
 function App() {
@@ -63,6 +64,8 @@ function App() {
           <Route path='/:id' element={<Navigate to="/login" />} />
          </>
        )}
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       <Analytics />

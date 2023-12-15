@@ -1,0 +1,81 @@
+.contact .wrapper {
+  margin-top: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  max-width: 1100px;
+}
+
+.contact__left h1 {
+  font-family: var(--font-1);
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 42px;
+  text-align: center;
+}
+
+.contact__form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact__form-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact form input,
+.contact form textarea {
+  background-color: white;
+  border: 1px solid rgb(164, 164, 164);
+  padding: 8px 10px;
+  border-radius: 1rem;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.contact__form textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.contact__form button {
+  background-color: var(--color-blue);
+  color: white;
+  font-size: 16px;
+  padding: 8px 20px;
+  border-radius: 1.5rem;
+  border: none;
+}
+
+.contact__left > span  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.contact__left span span{
+    background: rgb(231, 231, 231);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.contact__left span svg {
+  color: black;
+}
+
+.contact__left span a {
+  color: var(--color-blue);
+}
