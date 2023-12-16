@@ -39,7 +39,7 @@ const Card = ({item, adminPage = false, userPage = false}) => {
           {userPage ? (
             <></>
           ) : (
-            <span href={`/iscritti/${item._id}`}>vedi iscritti</span>
+            <a href={`/iscritti/${item._id}`}>vedi iscritti</a>
           )}
         </span>
       </div>

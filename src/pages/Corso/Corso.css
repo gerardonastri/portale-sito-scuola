@@ -27,6 +27,13 @@
     justify-content: space-between;
 
 }
+
+.corso__img, .corso__right{
+    flex: 1 !important;
+}
+.corso__img img{
+    width: 100%;
+}
 .corso__info-item{
     display: flex;
     flex-direction: column;
