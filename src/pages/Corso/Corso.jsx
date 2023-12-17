@@ -138,9 +138,7 @@ const Corso = () => {
            <div className="corso__right">
                 <div className="corso__text">
                     <h1>{corso?.name}</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem delectus recusandae, aperiam reprehenderit est fugit iste! Odit porro debitis.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa unde eos neque autem. Doloremque ducimus, tempora, quidem sapiente neque enim mollitia commodi soluta sequi molestias nobis, unde veritatis facilis aut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ullam assumenda.</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et autem neque nesciunt dolorem doloribus. Quia quas minus est consectetur placeat!</p>
+                    <p>{corso?.desc}</p>
                 </div>
 
                 <div className="corso__info">

@@ -11,8 +11,8 @@ const PopUp = () => {
     const isActive = window.localStorage.getItem("setPlesso")
 
     const [plesso, setPlesso] = useState("iti")
-    const [classe, setClasse] = useState("")
-    const [sezione, setSezione] = useState("")
+    const [classe, setClasse] = useState("1")
+    const [sezione, setSezione] = useState("E")
 
     const user = useSelector(state => state.currentUser)
 
@@ -24,8 +24,8 @@ const PopUp = () => {
     try {
         window.localStorage.setItem("setPlesso", true)
         const res = await axiosReq.put(`/auth/plesso/${user.user._id}`, {
-            plesso,
-            classe: `${classe}${sezione}`,
+            plesso: plesso.toLowerCase(),
+            classe: `${classe}${sezione.toUpperCase()}`,
             token: user.token
         })
         dispatch(loginSuccess(res.data))
@@ -46,6 +46,7 @@ const PopUp = () => {
             <h2>Inserisci la classe</h2>
             <div className="selectContainer">
                 <select onChange={(e) => setClasse(e.target.value)}>
+                    
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
