@@ -41,7 +41,7 @@ const Autogestione = () => {
         const getData = async () => {
             setIsLoading(true)
             try{
-                const res = await axiosReq.get(`/corso?plesso=${"scientifico"}`)
+                const res = await axiosReq.get(`/corso?plesso=${user?.user?.plesso}`)
                 setCorsi(res.data)
                 setIsLoading(false)
             } catch (error){

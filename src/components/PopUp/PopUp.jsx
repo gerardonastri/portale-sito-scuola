@@ -41,7 +41,7 @@ const PopUp = () => {
             <h2>Inserisci plesso</h2>
             <select onChange={(e) => setPlesso(e.target.value)}>
                 <option value="iti">Iti</option>
-                <option value="scientifico">Scientifico</option>
+                <option value="liceo">Liceo</option>
             </select>
             <h2>Inserisci la classe</h2>
             <div className="selectContainer">
