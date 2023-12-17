@@ -118,6 +118,7 @@
 }
 
 .autogestione__items-element_text{
+    width: 100%;
     position: absolute;
     top: 10%;
     left: 0;
@@ -128,6 +129,7 @@
     font-size: 13px;
     color: white;
     max-width: 80%;
+    text-align: center;
     margin: 0 auto;
     line-height: 20px;
     margin-top: 20px;
