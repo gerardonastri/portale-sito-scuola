@@ -34,7 +34,7 @@ const Navbar = ({type = "normal"}) => {
         <a href="/">Home</a>
         <a href="/contact">Contact</a>
         <a href="/iscrizioni">Iscrizioni</a>
-        {(user?.isAdmin || user?.isOrganizzatore) && (
+        {(user?.isAdmin || user?.organizzatore) && (
           <a href="/manage">Corsi</a>
         )}
         {(user?.isAdmin) && (
