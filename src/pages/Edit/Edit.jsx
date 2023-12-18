@@ -108,7 +108,7 @@ const Edit = () => {
                         </div>
                         <div className="inputGroup">
                             <label>slot corso</label>
-                            <input type="number" placeholder='3'  />
+                            <input type="number" placeholder={slot && slot} value={slot && slot} onChange={(e) => setSlot(e.target.value)}   />
                         </div>
                     </div>
 

@@ -38,6 +38,7 @@ const Corso = () => {
 
      //item
      const [corso, setCorso] = useState(null)
+     const [slot, setSlot] = useState(1)
      let { id } = useParams(); 
 
      useEffect(() => {
@@ -45,6 +46,9 @@ const Corso = () => {
             try{
                 const res = await axiosReq.get(`/corso/${id}`)
                 setCorso(res.data)
+                if(res.data.ora){
+                    setSlot(res.data.ora)
+                }
              } catch (error){
                 console.log(error);
             }
@@ -54,7 +58,6 @@ const Corso = () => {
 
     //iscrizione al corso
 
-    const [slot, setSlot] = useState(1)
     const dispatch = useDispatch()
     const handleIscrizione = async () => {
         try {
@@ -99,6 +102,7 @@ const Corso = () => {
 
             let isSlotLibero = true;
             for(let i = slot; i < corso?.durata + slot; i++){
+                console.log(slot);
                 if(!user?.user.slotLiberi.includes(i)){
                     isSlotLibero = false;
                 }
@@ -116,11 +120,9 @@ const Corso = () => {
                 iscrittiAlCorso++;
             }
            })
-           console.log(iscrittiAlCorso);
            
            if(corso?.capienzaMassima === iscrittiAlCorso && counter === 0){
             setCanSubscribe("sold")
-            console.log("ciao");
            } 
         }
         handleCanSub()
@@ -163,7 +165,7 @@ const Corso = () => {
 
                 <div className="corso__slot">
                     {Array.from({ length: corso?.slot }).map((it, i) => (
-                        <span className={slot === i+1 ? "corso__slot-item active" : "corso__slot-item"} onClick={() => setSlot(i + 1)}>Slot {i + 1}</span>
+                        <span className={slot === i+1 ? "corso__slot-item active" : "corso__slot-item"} onClick={() => setSlot(corso?.ora ? i + corso?.ora : i + 1)}>Slot {corso?.ora ? i + corso?.ora : i + 1}</span>
                     ))}
                 </div>
             
