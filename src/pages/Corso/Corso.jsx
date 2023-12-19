@@ -117,7 +117,7 @@ const Corso = () => {
                         isSlotLibero = false;
                     }
                 } else if(slot === 2){
-                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 5) || !user?.user.slotLiberi.includes(slot + 4)){
+                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 3) || !user?.user.slotLiberi.includes(slot + 4)){
                         isSlotLibero = false;
                     }
                 } 
