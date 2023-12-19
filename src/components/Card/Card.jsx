@@ -12,20 +12,20 @@ const Card = ({item, adminPage = false, userPage = false}) => {
   return (
     <div className='card'>
       <div className="card__up">
-        <h3>{item?.name}</h3>
+        <h3>{item?.name && item?.name}</h3>
       </div>
       <div className="card__items">
         {userPage ? (
           <>
             <span><GiTeacher />{item?.organizzatore.name.split(" ")[0]}</span>
-            <span><FaLocationDot />{item?.classe}</span>
-            <span><IoTimeOutline />{item?.durata}</span>
+            <span><FaLocationDot />{item?.classe && item?.classe}</span>
+            <span><IoTimeOutline />{item?.durata && item?.durata}</span>
           </>
         ) : (
           <>
-          <span><GiTeacher />{item?.organizzatore.name.split(" ")[0]}</span>
-          <span><IoIosPeople />{item?.capienzaMassima}</span>
-          <span><IoTimeOutline />{item?.durata}</span>
+          <span><GiTeacher />{item?.organizzatore?.name && item?.organizzatore.name.split(" ")[0]}</span>
+          <span><IoIosPeople />{item?.capienzaMassima && item?.capienzaMassima}</span>
+          <span><IoTimeOutline />{item?.durata && item?.durata}</span>
           </>
         )}
       </div>
