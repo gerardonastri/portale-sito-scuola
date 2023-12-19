@@ -1,13 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react'
 import './Navbar.css'
 
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import logo from '../../images/logo_scuola_vettoriale.svg'
 
+import { logout } from '../../redux/userRedux'
+
 const Navbar = ({type = "normal"}) => {
 
-
+  const dispatch = useDispatch()
   const [isActive, setIsActive] = useState(false)
   const [showLinks, setShowLinks] = useState(false)
 
@@ -23,6 +25,11 @@ const Navbar = ({type = "normal"}) => {
   }
 
   window.addEventListener("scroll", changeBg)
+
+  const handleLogout = () => {
+    dispatch(logout())
+    window.location.reload()
+  }
 
   return (
     <div className={isActive || showLinks ? `navbar active ${type !== "normal" && "secondType"}` : `navbar ${type !== "normal" && "secondType"}`}>
@@ -40,6 +47,7 @@ const Navbar = ({type = "normal"}) => {
         {(user?.isAdmin) && (
           <a href="/admin">Admin</a>
         )}
+        <button onClick={handleLogout}>Logout</button>
       </div>
       <div className="hamburger" onClick={() => {setShowLinks(prev => !prev)}}>
         <div className={showLinks ? "bar active" : "bar"} />

@@ -9,6 +9,8 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Card = ({item, adminPage = false, userPage = false}) => {
 
+  console.log(item);
+
   return (
     <div className='card'>
       <div className="card__up">
@@ -17,7 +19,7 @@ const Card = ({item, adminPage = false, userPage = false}) => {
       <div className="card__items">
         {userPage ? (
           <>
-            <span><GiTeacher />{item?.organizzatore.name.split(" ")[0]}</span>
+            <span><GiTeacher />{item?.organizzatore?.name.split(" ")[0] }</span>
             <span><FaLocationDot />{item?.classe && item?.classe}</span>
             <span><IoTimeOutline />{item?.durata && item?.durata}</span>
           </>
