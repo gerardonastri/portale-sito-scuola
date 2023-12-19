@@ -23,7 +23,8 @@ const Autogestione = () => {
         const validate = async () => {
             try {
                 const res = await axiosReq.post("/auth/verify", {
-                token: user?.token
+                token: user?.token,
+                name: user?.user.name
                 })
                 
             } catch (error) {
