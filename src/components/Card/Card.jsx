@@ -9,37 +9,35 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Card = ({item, adminPage = false, userPage = false}) => {
 
-  console.log(item)
-
   return (
     <div className='card'>
       <div className="card__up">
-        <h3>{item.name}</h3>
+        <h3>{item?.name}</h3>
       </div>
       <div className="card__items">
         {userPage ? (
           <>
-            <span><GiTeacher />{item.organizzatore.name.split(" ")[0]}</span>
-            <span><FaLocationDot />{item.classe}</span>
-            <span><IoTimeOutline />{item.durata}</span>
+            <span><GiTeacher />{item?.organizzatore.name.split(" ")[0]}</span>
+            <span><FaLocationDot />{item?.classe}</span>
+            <span><IoTimeOutline />{item?.durata}</span>
           </>
         ) : (
           <>
-          <span><GiTeacher />{item.organizzatore.name.split(" ")[0]}</span>
-          <span><IoIosPeople />{item.capienzaMassima}</span>
-          <span><IoTimeOutline />{item.durata}</span>
+          <span><GiTeacher />{item?.organizzatore.name.split(" ")[0]}</span>
+          <span><IoIosPeople />{item?.capienzaMassima}</span>
+          <span><IoTimeOutline />{item?.durata}</span>
           </>
         )}
       </div>
       <div className="card__bottom">
         <span>
           {adminPage && (
-            <a href={`/manage/${item._id}`}>modifica</a>
+            <a href={`/manage/${item?._id}`}>modifica</a>
           )}
           {userPage ? (
             <></>
           ) : (
-            <a href={`/iscritti/${item._id}`}>vedi iscritti</a>
+            <a href={`/iscritti/${item?._id}`}>vedi iscritti</a>
           )}
         </span>
       </div>
