@@ -19,7 +19,9 @@ const Corso = () => {
 
     
 
-
+    //controllo token
+    const user = useSelector(state => state.currentUser)
+  
      //item
      const [corso, setCorso] = useState(null)
      const [slot, setSlot] = useState(1)
