@@ -36,7 +36,7 @@ const PopUp = () => {
    }
 
   return (
-    <div className={(isActive || user?.user.classe) ? 'popup' : 'popup active'}>
+    <div className={(!isActive || user?.user.classe.length < 1) ? 'popup active' : 'popup'}>
         <div className="popup__container">
             <h2>Inserisci plesso</h2>
             <select onChange={(e) => setPlesso(e.target.value)}>
