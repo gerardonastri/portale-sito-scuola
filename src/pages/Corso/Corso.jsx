@@ -128,12 +128,13 @@ const Corso = () => {
             
            if(counter === 0){
             isSlotLibero ? setCanSubscribe("si") : setCanSubscribe("occupato");
+           }   else {
+            setCanSubscribe("no")
            } 
         //    else if(counter < 0){
         //     setCanSubscribe("iscritto")
-           } else {
-            setCanSubscribe("no")
-           } 
+        //    }
+           
 
            let iscrittiAlCorso = 0;
            corso?.iscritti?.forEach(item => {
