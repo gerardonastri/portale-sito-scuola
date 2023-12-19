@@ -83,9 +83,10 @@ const Corso = () => {
             corso?.iscritti?.forEach(item => {
                 if(item.user === user?.user._id && item.slot === slot){
                     counter++;
-                } else if(item.user === user?.user._id) {
-                    counter = -1
-                }
+                } 
+                // else if(item.user === user?.user._id) {
+                //     counter = -1
+                // }
             })
 
             let isSlotLibero = true;
@@ -127,8 +128,9 @@ const Corso = () => {
             
            if(counter === 0){
             isSlotLibero ? setCanSubscribe("si") : setCanSubscribe("occupato");
-           } else if(counter < 0){
-            setCanSubscribe("iscritto")
+           } 
+        //    else if(counter < 0){
+        //     setCanSubscribe("iscritto")
            } else {
             setCanSubscribe("no")
            } 
@@ -201,9 +203,9 @@ const Corso = () => {
                     {canSubscribe == 'sold' && (
                         <p>I posti sono finiti! Prova un altro slot o cerca un altro corso libero.</p>
                     )}
-                    {canSubscribe == 'iscritto' && (
+                    {/* {canSubscribe == 'iscritto' && (
                         <p>Sei già iscritto a uno slot di questo corso! Puoi selezionarne solo uno per corso.</p>
-                    )}
+                    )} */}
                 </div>
                 <div className="corso__stuff">
                     {(canSubscribe == 'no' && corso?.link?.length > 0) && (
