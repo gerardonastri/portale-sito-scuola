@@ -21,6 +21,10 @@ const PopUp = () => {
 
 
    const handleClick = async () => {
+    if(plesso.toLowerCase() === 'liceo' && classe.toLowerCase() === 'E'){
+        setClasse("A")
+    }
+
     try {
         window.localStorage.setItem("setPlesso", true)
         const res = await axiosReq.put(`/auth/plesso/${user.user._id}`, {
