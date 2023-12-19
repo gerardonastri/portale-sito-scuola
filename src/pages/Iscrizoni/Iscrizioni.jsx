@@ -14,19 +14,6 @@ const Iscrizioni = () => {
     //controllo token
     const user = useSelector(state => state.currentUser)
   
-    useEffect(() => {
-        const validate = async () => {
-            try {
-                const res = await axiosReq.post("/auth/verify", {
-                token: user?.token
-                })
-                
-            } catch (error) {
-                window.location.replace("/login")
-            }
-        }
-      validate()
-    }, [])
 
     //corsi utente
     const [corsi, setCorsi] = useState(null)
