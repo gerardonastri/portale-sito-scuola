@@ -147,7 +147,6 @@ const Corso = () => {
         handleCanSub()
     }, [corso?.iscritti, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, corso?.durata, corso?.capienzaMassima])
 
-    
   return (
     <div className='corso'>
         <Navbar type="white" />
@@ -204,6 +203,11 @@ const Corso = () => {
                     )}
                     {canSubscribe == 'iscritto' && (
                         <p>Sei già iscritto a uno slot di questo corso! Puoi selezionarne solo uno per corso.</p>
+                    )}
+                </div>
+                <div className="corso__stuff">
+                    {(canSubscribe == 'no' && corso?.link?.length > 0) && (
+                        <p>Iscrivi alla classroom da questo link: <a href={corso?.link}>{corso?.link}</a></p>
                     )}
                 </div>
             </div>

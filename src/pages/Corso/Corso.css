@@ -63,6 +63,20 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
+.corso__stuff{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.corso__stuff p{
+    color: var(--color-blue);
+}
+
+.corso__stuff a{
+    color: var(--color-red);
+}
 .corso__action button{
     width: 100%;
     padding: 10px 0;
