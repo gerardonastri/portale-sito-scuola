@@ -28,6 +28,7 @@ const Autogestione = () => {
                 })
                 
             } catch (error) {
+                window.localStorage.setItem("setPlesso", false)
                 window.location.replace("/login")
             }
         }

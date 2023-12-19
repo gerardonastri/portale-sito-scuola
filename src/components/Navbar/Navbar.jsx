@@ -27,6 +27,7 @@ const Navbar = ({type = "normal"}) => {
   window.addEventListener("scroll", changeBg)
 
   const handleLogout = () => {
+    window.localStorage.setItem("setPlesso", false)
     dispatch(logout())
     window.location.reload()
   }
