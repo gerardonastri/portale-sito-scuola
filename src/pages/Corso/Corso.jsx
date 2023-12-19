@@ -101,12 +101,41 @@ const Corso = () => {
             })
 
             let isSlotLibero = true;
-            for(let i = slot; i < corso?.durata + slot; i++){
-                console.log(slot);
-                if(!user?.user.slotLiberi.includes(i)){
-                    isSlotLibero = false;
+            if(corso?.durata === 1){
+                for(let i = slot; i < corso?.durata + slot; i++){
+                    if(!user?.user.slotLiberi.includes(i)){
+                        isSlotLibero = false;
+                    }
                 }
+            }  else if (corso?.durata === 2){
+                if(slot === 1){
+                    for(let i = slot; i < corso?.durata + slot; i++){
+                        if(!user?.user.slotLiberi.includes(i)){
+                            isSlotLibero = false;
+                        }
+                    }
+                } else if(slot === 2){
+                    if(!user?.user.slotLiberi.includes(slot + 1) || !user?.user.slotLiberi.includes(slot + 2)){
+                        isSlotLibero = false;
+                    }
+                } else if(slot === 3){
+                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 3)){
+                        isSlotLibero = false;
+                    }
+                }
+            }  else if (corso?.durata === 3){
+                if(slot === 1){
+                    if(!user?.user.slotLiberi.includes(slot) || !user?.user.slotLiberi.includes(slot + 1) || !user?.user.slotLiberi.includes(slot + 2)){
+                        isSlotLibero = false;
+                    }
+                } else if(slot === 2){
+                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 5) || !user?.user.slotLiberi.includes(slot + 4)){
+                        isSlotLibero = false;
+                    }
+                } 
             }
+
+            
             
            if(counter === 0){
             isSlotLibero ? setCanSubscribe("si") : setCanSubscribe("occupato");
