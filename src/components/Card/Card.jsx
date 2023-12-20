@@ -16,7 +16,7 @@ const Card = ({item, adminPage = false, userPage = false}) => {
       <div className="card__up">
         <h3>{item?.name && item?.name}</h3>
       </div>
-      <div className="card__items">
+      <a href={`/corso/${item?._id}`} className="card__items">
         {userPage ? (
           <>
             {/* <span><GiTeacher />{item?.organizzatore?.name.split(" ")[0] }</span> */}
@@ -30,7 +30,7 @@ const Card = ({item, adminPage = false, userPage = false}) => {
           <span><IoTimeOutline />{item?.durata && item?.durata}</span>
           </>
         )}
-      </div>
+      </a>
       <div className="card__bottom">
         <span>
           {adminPage && (
