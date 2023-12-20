@@ -20,10 +20,15 @@
   text-align: center;
 }
 
+.contact__form{
+  max-width: 90%;
+  margin: 0 auto;
+}
 .contact__form-container {
   display: flex;
   align-items: center;
   gap: 15px;
+  width: 100%;
 }
 
 .contact form input,
@@ -78,4 +83,17 @@
 
 .contact__left span a {
   color: var(--color-blue);
+}
+
+
+@media screen and (max-width: 700px) {
+  .contact__form-container{
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .contact__form-container input{
+    margin-bottom: 0 !important;
+    width: 100%;
+  }
 }
