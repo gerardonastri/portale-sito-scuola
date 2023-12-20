@@ -29,7 +29,43 @@ function App() {
     <Router>
 
       <Routes>
-      
+      {user ? ( //solo s l'utente è loggato può accedere a queste pagine
+        <>
+          <Route path='/' element={<Navigate to="/autogestione" />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/autogestione' element={<Autogestione />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/corso/:id' element={<Corso />} />
+          <Route path='/iscrizioni' element={<Iscrizioni />} />
+
+          {user?.user?.isAdmin && (
+            <>
+              <Route path="/admin" element={<Admin />} />
+              <Route path='/edit/:id' element={<Edit />} /> 
+              <Route path="/admin/users" element={<Users />} />
+              <Route path="/admin/user/:id" element={<EditUser />} />
+              <Route path="/admin/corsi" element={<CorsiAdmin />} />
+              <Route path="/admin/create" element={<Create />} />
+            </>
+          )}
+
+          {(user?.user?.isAdmin || user?.user?.organizzatore) && (
+           <>
+             <Route path="/manage" element={<Manage />} />
+             <Route path="/iscritti/:id" element={<Iscritti />} />
+           </>
+          )}
+        </>
+       ) : (
+        <> {/* pagine accedibili da un utente normale */}
+          
+          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Navigate to="/login" />} />
+          <Route path='/:id' element={<Navigate to="/login" />} />
+         </>
+       )}
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       <Analytics />
