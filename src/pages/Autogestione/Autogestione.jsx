@@ -54,6 +54,21 @@ const Autogestione = () => {
         getData()
     }, [])
 
+    const bgs = [
+        "#c44601",
+        "#b51963",
+        "#89ce00",
+        "#029356",
+        "#5928ed"
+    ]
+
+    const randomBgs = []
+
+    corsi?.forEach(item => {
+        const r = Math.floor(Math.random() * bgs.length - 1)
+        randomBgs.push(bgs[r])
+    })
+
   return (
     <div className="autogestione">
         <Navbar />
@@ -77,14 +92,14 @@ const Autogestione = () => {
                 <Spinner isActive={isLoading} />
             ) : (
                 <div className="autogestione__items">
-                    {corsi?.map(corso => (
+                    {corsi?.map((corso, i) => (
                         <a href={`/corso/${corso._id}`} className="autogestione__items-element">
                         <div className="autogestione__items-element_text">
-                                <h2>{corso.name}</h2>
-                                <p>{corso.desc}</p>
+                            <h2>{corso.name}</h2>
+                            <p>{corso.desc}</p>
                         </div>
-                        <div className="img-overlay" />
-                            <img src={corso.img} alt="" />
+                        <div className="img-overlay" style={{background: randomBgs[i]}} />
+                            {/* <img src={corso.img} alt="" /> */}
                         </a>
                     ))}
                 </div>

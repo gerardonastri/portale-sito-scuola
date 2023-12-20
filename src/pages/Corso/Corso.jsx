@@ -4,6 +4,8 @@ import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import {useParams} from 'react-router-dom'
 
+import img from '../../images/corso.webp'
+
 //icons
 import { PiClockCountdownThin } from "react-icons/pi";
 import { IoIosPeople } from "react-icons/io";
@@ -139,13 +141,13 @@ const Corso = () => {
         handleCanSub()
     }, [corso?._id, slot, canSubscribe, corso?.iscritti, user?.user._id, user?.user.slotLiberi, iscrizioniUser, corso?.slots, corso?.capienzaMassima])
 
-    console.log(user?.user);
+    
   return (
     <div className='corso'>
         <Navbar type="white" />
         <div className="wrapper">
             <div className="corso__img">
-                <img src={corso?.img} alt="" />
+                <img src={img} alt="" />
             </div>
 
            <div className="corso__right">
