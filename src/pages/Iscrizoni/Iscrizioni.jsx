@@ -23,7 +23,7 @@ const Iscrizioni = () => {
         const getCorsi = async () => {
             setIsLoading(true)
             try {
-                const res = await axiosReq.get(`/corso/iscrizioni/${user?.user._id}`)
+                const res = await axiosReq.get(`/iscritto/iscrizioni/${user?.user._id}`)
                 setCorsi(res.data)
                 setIsLoading(false)
             } catch (error) {
@@ -42,7 +42,7 @@ const Iscrizioni = () => {
                     <h2>Corsi a cui sei iscritto</h2>
                     <div className="manage__items">
                         {corsi?.map(item => (
-                            <Card item={item} userPage={true} />
+                            <Card item={item.corso} userPage={true} />
                         ))}
                     </div>
                 </>

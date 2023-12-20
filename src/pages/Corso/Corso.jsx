@@ -32,9 +32,6 @@ const Corso = () => {
             try{
                 const res = await axiosReq.get(`/corso/${id}`)
                 setCorso(res.data)
-                if(res.data.ora){
-                    setSlot(res.data.ora)
-                }
              } catch (error){
                 console.log(error);
             }
@@ -47,9 +44,10 @@ const Corso = () => {
     const dispatch = useDispatch()
     const handleIscrizione = async () => {
         try {
-            const res = await axiosReq.post(`/corso/${id}`, {
-                id: user.user._id,
-                slot: slot,
+            const res = await axiosReq.post(`/iscritto/`, {
+                user: user.user._id,
+                slot:  slot,
+                corso: corso?._id,
                 token: user?.token
             })
             dispatch(loginSuccess(res.data))
@@ -62,9 +60,10 @@ const Corso = () => {
     // annullazione iscrizione al corso
      const handleAnnullazione = async () => {
         try {
-            const res = await axiosReq.post(`/corso/annulla/${id}`, {
-                id: user.user._id,
+            const res = await axiosReq.put(`/iscritto/${id}`, {
+                user: user.user._id,
                 slot: slot,
+                corso: corso?._id,
                 token: user?.token
             })
             dispatch(loginSuccess(res.data))
@@ -74,70 +73,60 @@ const Corso = () => {
         }
     }
 
+    //gestire se può iscriversi
     const [canSubscribe, setCanSubscribe] = useState("si")
+    const [iscrizioniUser, setIscrizioniUser] = useState(null)
+
+    useEffect(() => {
+        const getIscrizioni = async () => {
+            try {
+                const res = await axiosReq.get(`/iscritto/iscrizioni/${user?.user._id}`)
+                console.log(res.data);
+                setIscrizioniUser(res.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getIscrizioni()
+    }, [user?.user._id])
+
+    const slotsFront = []
+    if(corso?.slots){
+        for(let i = 0; i < corso?.slots.length; i++){
+            slotsFront.push(i)
+        }
+    }
 
     useEffect(() => {
         const handleCanSub = () => {
 
             let counter = 0;
-            corso?.iscritti?.forEach(item => {
-                if(item.user === user?.user._id && item.slot === slot){
+            iscrizioniUser?.forEach(item => {
+                if(item.user === user?.user._id && item.slot === slot && item.corso?._id === corso?._id){
                     counter++;
                 } 
-                // else if(item.user === user?.user._id) {
-                //     counter = -1
-                // }
             })
 
             let isSlotLibero = true;
-            if(corso?.durata === 1){
-                for(let i = slot; i < corso?.durata + slot; i++){
-                    if(!user?.user.slotLiberi.includes(i)){
-                        isSlotLibero = false;
-                    }
+            
+            for(let i = 0; i < corso?.slots[slot - 1].length; i++){
+                if(!user?.user.slotLiberi.includes(corso?.slots[slot - 1][i])){
+                    isSlotLibero = false;
                 }
-            }  else if (corso?.durata === 2){
-                if(slot === 1){
-                    for(let i = slot; i < corso?.durata + slot; i++){
-                        if(!user?.user.slotLiberi.includes(i)){
-                            isSlotLibero = false;
-                        }
-                    }
-                } else if(slot === 2){
-                    if(!user?.user.slotLiberi.includes(slot + 1) || !user?.user.slotLiberi.includes(slot + 2)){
-                        isSlotLibero = false;
-                    }
-                } else if(slot === 3){
-                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 3)){
-                        isSlotLibero = false;
-                    }
-                }
-            }  else if (corso?.durata === 3){
-                if(slot === 1){
-                    if(!user?.user.slotLiberi.includes(slot) || !user?.user.slotLiberi.includes(slot + 1) || !user?.user.slotLiberi.includes(slot + 2)){
-                        isSlotLibero = false;
-                    }
-                } else if(slot === 2){
-                    if(!user?.user.slotLiberi.includes(slot + 2) || !user?.user.slotLiberi.includes(slot + 3) || !user?.user.slotLiberi.includes(slot + 4)){
-                        isSlotLibero = false;
-                    }
-                } 
             }
 
             
-            
+          
            if(counter === 0){
             isSlotLibero ? setCanSubscribe("si") : setCanSubscribe("occupato");
            }   else {
             setCanSubscribe("no")
            } 
-        //    else if(counter < 0){
-        //     setCanSubscribe("iscritto")
-        //    }
            
 
            let iscrittiAlCorso = 0;
-           corso?.iscritti?.forEach(item => {
+           iscrizioniUser?.forEach(item => {
             if(item.slot === slot && item.user !== user?.user._id){
                 iscrittiAlCorso++;
             }
@@ -148,8 +137,9 @@ const Corso = () => {
            } 
         }
         handleCanSub()
-    }, [corso?.iscritti, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, corso?.durata, corso?.capienzaMassima])
+    }, [corso?._id, slot, canSubscribe, corso?.iscritti, user?.user._id, user?.user.slotLiberi, iscrizioniUser, corso?.slots, corso?.capienzaMassima])
 
+    console.log(user?.user);
   return (
     <div className='corso'>
         <Navbar type="white" />
@@ -185,8 +175,8 @@ const Corso = () => {
                 </div>
 
                 <div className="corso__slot">
-                    {Array.from({ length: corso?.slot }).map((it, i) => (
-                        <span className={slot === i+1 ? "corso__slot-item active" : "corso__slot-item"} onClick={() => setSlot(corso?.ora ? i + corso?.ora : i + 1)}>Slot {corso?.ora ? i + corso?.ora : i + 1}</span>
+                    {slotsFront.map((item) => (
+                        <span className={slot === item + 1 ? "corso__slot-item active" : "corso__slot-item"} onClick={() => setSlot(item + 1)}>Slot {item + 1}</span>
                     ))}
                 </div>
             

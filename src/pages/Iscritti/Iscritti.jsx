@@ -38,9 +38,9 @@ const Iscritti = () => {
     useEffect(() => {
        const getData = async () => {
           try{
-             const res = await axiosReq.get(`/corso/iscritti/${id}`)
-             setLista(res.data.lista)
-             setName(res.data.name)
+             const res = await axiosReq.get(`/iscritto/manage/${id}`)
+             setLista(res.data)
+             setName(res.data[0].corso?.name)
           } catch (error){
              console.log(error);
           }
