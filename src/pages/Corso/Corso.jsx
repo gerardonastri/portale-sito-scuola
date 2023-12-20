@@ -112,7 +112,7 @@ const Corso = () => {
         }
           }
          getIsc()
-        }, [])
+        }, [corso?._id])
 
     useEffect(() => {
         const handleCanSub = () => {
@@ -147,7 +147,7 @@ const Corso = () => {
                 iscrittiAlCorso++;
            }
         })
-        console.log(corso?.capienzaMassima)
+        console.log(iscrittiAlCorso)
            if(corso?.capienzaMassima <= iscrittiAlCorso){
             console.log("sold")
             setCanSubscribe("sold")
