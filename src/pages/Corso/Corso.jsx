@@ -147,8 +147,7 @@ const Corso = () => {
                 iscrittiAlCorso++;
            }
         })
-
-           if(corso?.capienzaMassima <= iscrittiAlCorso && counter === 0){
+           if(corso?.capienzaMassima <= iscrittiAlCorso){
             setCanSubscribe("sold")
            } 
         }
