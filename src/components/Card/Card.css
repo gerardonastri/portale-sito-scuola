@@ -57,10 +57,10 @@
 }
 
 .card__bottom:hover{
-    background-color: rgba(158, 25, 25, 0.571)
+    /* background-color: var(--color-blue); */
 }
 
-.card__bottom a{
+.card__bottom{
     font-size: 13px;
     text-transform: uppercase;
     color: white;

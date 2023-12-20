@@ -31,18 +31,14 @@ const Card = ({item, adminPage = false, userPage = false}) => {
           </>
         )}
       </a>
-      <div className="card__bottom">
-        <span>
-          {adminPage && (
-            <a href={`/manage/${item?._id}`}>modifica</a>
-          )}
-          {userPage ? (
-            <></>
-          ) : (
-            <a href={`/iscritti/${item?._id}`}>vedi iscritti</a>
-          )}
-        </span>
-      </div>
+      {adminPage && (
+        <a className='card__bottom' href={`/manage/${item?._id}`}>modifica</a>
+        )}
+        {userPage ? (
+          <></>
+        ) : (
+         <a className='card__bottom' href={`/iscritti/${item?._id}`}>vedi iscritti</a>
+       )}
     </div>
   )
 }

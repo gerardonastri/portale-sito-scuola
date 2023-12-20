@@ -13,13 +13,13 @@ import * as XLSX from "xlsx";
 const downloadExcel = (lista, nomeCorso) => {
 
 
-  const nomeArray = ["n°", "iscritto", "slot"]
+  const nomeArray = ["n°", "iscritto", "slot", "classe"]
   const aoa = [
     nomeArray
   ]
 
   lista?.forEach((utente, i) => {
-    aoa.push([i + 1, utente.user.name, utente.slot])
+    aoa.push([i + 1, utente.user.name, utente.slot, utente.user.classe])
   })
   /* create worksheet */
   var ws = XLSX.utils.aoa_to_sheet(aoa);
