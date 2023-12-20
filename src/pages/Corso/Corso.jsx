@@ -107,8 +107,9 @@ const Corso = () => {
           try{
           const res = await axiosReq.get(`/iscritto/iscrizioni/corso/${corso?._id}`) 
         setIscrizioniCorso(res.data) 
-        }catch(error) {}
+        }catch(error) {
           console.log(error) 
+        }
           }
          getIsc()
         }, [])
