@@ -146,9 +146,10 @@ const Corso = () => {
             if(item.slot === slot && item.user !== user?.user._id){
                 iscrittiAlCorso++;
            }
+           console.log(iscrittiAlCorso)
         })
 
-           if(corso?.capienzaMassima === iscrittiAlCorso && counter === 0){
+           if(corso?.capienzaMassima <= iscrittiAlCorso && counter === 0){
             setCanSubscribe("sold")
            } 
         }
