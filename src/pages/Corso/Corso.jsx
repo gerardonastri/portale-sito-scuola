@@ -153,7 +153,7 @@ const Corso = () => {
            } 
         }
         handleCanSub()
-    }, [corso?._id, slot, canSubscribe, corso?.iscritti, user?.user._id, user?.user.slotLiberi, iscrizioniUser, corso?.slots, corso?.capienzaMassima])
+    }, [corso?._id, slot, canSubscribe, user?.user._id, user?.user.slotLiberi, iscrizioniUser, corso?.slots, corso?.capienzaMassima, iscrizioniCorso])
 
     
   return (
