@@ -100,6 +100,19 @@ const Corso = () => {
         }
     }
 
+    const [iscrizioniCorso, setIscrizioniCorso] = useState(null) 
+
+        useEffect(() => {
+         const getIsc = async () => {
+          try{
+          const res = await axiosReq.get(`/iscritto/iscrizioni/corso/${corso?._id}`) 
+        setIscrizioniCorso(res.data) 
+        }catch(error) {}
+          console.log(error) 
+          }
+         getIsc()
+        }, [])
+
     useEffect(() => {
         const handleCanSub = () => {
 
@@ -126,14 +139,14 @@ const Corso = () => {
             setCanSubscribe("no")
            } 
            
-
+            
            let iscrittiAlCorso = 0;
-           iscrizioniUser?.forEach(item => {
+           iscrizioniCorso?.forEach(item => {
             if(item.slot === slot && item.user !== user?.user._id){
                 iscrittiAlCorso++;
-            }
-           })
-           
+           }
+        })
+
            if(corso?.capienzaMassima === iscrittiAlCorso && counter === 0){
             setCanSubscribe("sold")
            } 
