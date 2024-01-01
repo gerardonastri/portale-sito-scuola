@@ -1,0 +1,21 @@
+
+
+.home{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.home img{
+    width: 50%;
+    height: 300px;
+}
+
+.home h1{
+    font-family: var(--font-1);
+    color: var(--color-red);
+    text-align: center;
+    font-size: 36px;
+}

@@ -20,13 +20,13 @@ const Contact = () => {
         emailjs
           .sendForm(
             "service_h5vsgoi",
-            "template_c0ixuut",
+            "template_int8vnl",
             form.current,
-            "3Be9N3UsBN84mygsXcQja"
+            "roNiWWM2m232TRpdo"
           )
           .then(
             () => {
-              window.location.reload();
+              // window.location.reload();
             },
             (error) => {
               console.log(error.text);
