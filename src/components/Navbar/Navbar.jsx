@@ -41,10 +41,10 @@ const Navbar = ({type = "normal"}) => {
       <div className={showLinks ? "navbar__links show" : "navbar__links"}>
         <a href="/">Home</a>
         <a href="/contact">Contact</a>
-        {/* <a href="/iscrizioni">Iscrizioni</a>
+        <a href="/iscrizioni">Iscrizioni</a>
         {(user?.isAdmin || user?.organizzatore) && (
           <a href="/manage">Corsi</a>
-        )} */}
+        )}
         {(user?.isAdmin) && (
           <a href="/admin">Admin</a>
         )}

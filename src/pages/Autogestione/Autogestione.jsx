@@ -98,8 +98,8 @@ const Autogestione = () => {
                             <h2>{corso.name}</h2>
                             <p>{corso.desc}</p>
                         </div>
-                        <div className="img-overlay" style={{background: randomBgs[i]}} />
-                            {/* <img src={corso.img} alt="" /> */}
+                        <div className="img-overlay"  />
+                            <img src={corso.img} alt="" />
                         </a>
                     ))}
                 </div>
